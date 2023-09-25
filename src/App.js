@@ -1,8 +1,10 @@
 import './App.css';
+import Loader from "./loader/Loader.jsx"
 
 function App() {
   return (
-    <div>
+    <div className ="App">
+     <Loader />
     </div>
   );
 }
