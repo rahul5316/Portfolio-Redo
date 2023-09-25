@@ -2,30 +2,42 @@
   background-color: #333;
   color: #FFF;
 }
+
 .light-mode {
   background-color: #FFF;
   color: #333;
 }
+
+/* Added a wrapper for both toggler and icon */
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 48px;
+  right: 20px;
+  z-index: 1000;
+}
+
 .toggle-container {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-right: 10px; /* space between icon and toggler */
 }
+
 .toggle-switch {
   width: 40px;
   height: 20px;
   border-radius: 10px;
   background-color: #EEE;
-  position: relative;
-  margin-right: 10px;
+  position: fixed;
   transition: background-color 0.3s;
-  position:fixed;
-  display:flex;
-  align-items: center;
-  top:52px;
-  right:180px;
-  z-index:1000;
+  top:50px;
+  right: 190px
+
+
 }
+
 .toggle-switch::before {
   content: '';
   position: absolute;
@@ -45,10 +57,17 @@
 .icon {
   width: 24px;
   height: 24px;
-  position: fixed;
-  display: flex;
+  display:flex;
   align-items: center;
+  position:fixed;
   top:48px;
   right:166px
+}
 
+/* Responsive styles */
+@media screen and (max-width: 768px) { 
+  .toggle-wrapper {
+    top: 20px;
+    right: 10px;
+  }
 }

@@ -1,25 +1,22 @@
-import '../../loader.scss';
-import $ from 'jquery';
+import '../../styles/loader.scss';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Loader() {
-  const [isLoading, setIsLoading] = useState(true);
+export default function Loader({ onLoaded }) {
   const navigate = useNavigate();
+  
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(false);
-      navigate('/homepage');
-    }, 3500)
-  }, [navigate])
+      navigate('/hello');
+      onLoaded(); // Call the onLoaded function once the loading has finished
+    }, 3500);
+  }, [navigate, onLoaded]);
 
   return (
-    <div id="loader-wrapper">
-      <div id="loader">
-        <div className="loader-section section-left"></div>
-        <div className="loader-section section-right"></div>
-      </div>
-     </div>
+    <div className="animate">
+      <div className="pacman"></div>
+      <div className="dot"></div>
+      <div className="dots">Loading..</div>
+    </div>
   );
-
 }

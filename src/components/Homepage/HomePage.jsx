@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun } from 'styled-icons/fa-solid';
-import '../../toggler.css'
+import '../../styles/toggler.css'
 
 function HomePage() {
   const [darkMode, setDarkMode] = useState(false);
@@ -16,12 +16,12 @@ function HomePage() {
   }, [darkMode]);
 
   return (
-    <div>
+    <div className='homePage'>
       <h1>Hi! I am Rahul</h1>
       <div className="toggle-container" onClick={() => setDarkMode((prev) => !prev)}>
         <div className={`toggle-switch ${darkMode ? 'switch-right' : ''}`}></div>
-        {darkMode 
-          ? <Moon className="icon moon-icon" /> 
+        {darkMode
+          ? <Moon className="icon moon-icon" />
           : <Sun className="icon sun-icon" />}
       </div>
     </div>
