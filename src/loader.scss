@@ -1,3 +1,10 @@
+@import "bourbon";
+
+/* Demo Styles */
+body{
+  background-color: black;
+}
+
 #content {
   margin: 0 auto;
   padding-bottom: 50px;
@@ -9,6 +16,8 @@ h1 {
   font-size: 40px;
 }
 
+/* The Loader */
+
 #loader-wrapper {
   position: fixed;
   top: 0;
@@ -17,11 +26,13 @@ h1 {
   height: 100%;
   z-index: 10;
   overflow: hidden;
+  
+  // Modernizr no-js fallback
+  .no-js & {
+    display: none;
+  }
 }
 
-.no-js #loader-wrapper {
-  display: none;
-}
 
 #loader {
   display: block;
@@ -36,36 +47,37 @@ h1 {
   border-top-color: #16a085;
   animation: spin 1.7s linear infinite;
   z-index: 11;
+  
+  &:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #e74c3c;
+    animation: spin-reverse .6s linear infinite;
+  }
+  
+  &:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f9c922;
+    animation: spin 1s linear infinite;
+  }
 }
 
-#loader:before {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  border-top-color: #e74c3c;
-  animation: spin-reverse .6s linear infinite;
-}
-
-#loader:after {
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  border-top-color: #f9c922;
-  animation: spin 1s linear infinite;
-}
-
+// Bourbon mixins
 @keyframes spin {
-  0% {
+  0% { 
     transform: rotate(0deg);
   }
   100% {
@@ -74,7 +86,7 @@ h1 {
 }
 
 @keyframes spin-reverse {
-  0% {
+  0% { 
     transform: rotate(0deg);
   }
   100% {
@@ -82,12 +94,14 @@ h1 {
   }
 }
 
+
+
+
 #loader-wrapper .loader-section {
   position: fixed;
   top: 0;
   width: 51%;
   height: 100%;
-  background: #222;
   z-index: 10;
 }
 
@@ -98,6 +112,8 @@ h1 {
 #loader-wrapper .loader-section.section-right {
   right: 0;
 }
+
+/* Loaded styles */
 
 .loaded #loader-wrapper .loader-section.section-left {
   transform: translateX(-100%);

@@ -1,4 +1,4 @@
-import '../../loader.css';
+import '../../loader.scss';
 import $ from 'jquery';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
