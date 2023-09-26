@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun } from 'styled-icons/fa-solid';
 import '../../styles/toggler.css'
+import '../../styles/wavingHand.css'
 
 function HomePage() {
   const [darkMode, setDarkMode] = useState(false);
@@ -16,6 +17,7 @@ function HomePage() {
   }, [darkMode]);
 
   return (
+    <>
     <div className='homePage'>
       <h1>Hi! I am Rahul</h1>
       <div className="toggle-container" onClick={() => setDarkMode((prev) => !prev)}>
@@ -25,6 +27,12 @@ function HomePage() {
           : <Sun className="icon sun-icon" />}
       </div>
     </div>
+    <div className="waving-anime">
+    <span class="helloImg">
+  <img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Waving_Hand_Sign_Emoji_Icon_ios10_grande.png" title="Hello"/>
+</span>
+    </div>
+    </>
   );
 }
 
