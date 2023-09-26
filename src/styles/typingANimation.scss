@@ -1,0 +1,99 @@
+@import 'compass/css3';
+
+html,
+body {
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: left;
+    position: relative;
+    line-height: 1em;
+    height: 1em;
+    top: 50%;
+    left: 30%;
+    display: inline-block;
+    @include transform(translate(0%, -50%));
+    font-family: 'Times New Roman';
+}
+
+$cursor-color: #999;
+$select-color: #E0E0E0;
+$blink-cursor-delay: 1.5s;
+
+@include keyframes(blinkCursor) {
+    0% {
+        border-left: 0.1em solid transparent;
+    }
+    50% {
+        border-left: 0.1em solid transparent;
+    }
+    51% {
+        border-left: 0.1em solid $cursor-color;
+    }
+    100% {
+        border-left: 0.1em solid $cursor-color;
+    }
+}
+
+#content {
+    position: absolute;
+    list-style: none;
+    display: inline-block;
+    overflow: hidden;
+    left: 100%;
+    top: 0;
+    white-space: nowrap;
+
+    li {
+        display: none;
+        position: relative;
+        line-height: 100%;
+
+        &.active {
+            display: inline-block;
+
+            &.typing {
+                @include opacity(0);
+            }
+        }
+    }
+
+    .fakeContent {
+        position: absolute;
+        display: inline-block;
+        left: 0;
+        top: 0;
+        height: 1em;
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100vw;
+            height: 1em;
+            left: calc(100% - 0.1em);
+            top: 0;
+            z-index: -2;
+            border-left: 0.1em solid $cursor-color;
+            background-color: $select-color;
+            @include background-clip(padding-box);
+            @include animation(blinkCursor $blink-cursor-delay linear infinite);
+        }
+
+        &.typing:after {
+            background-color: transparent;
+            @include animation(none);
+            left: 100%;
+        }
+
+        &.selecting:after {
+            @include animation(none);
+        }
+    }
+
+}
