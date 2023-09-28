@@ -16,7 +16,7 @@ export default function Loader({ onLoaded }) {
     <div className="animate">
       <div className="pacman"></div>
       <div className="dot"></div>
-      <div className="dots">Loading..</div>
+      <div className="dots"></div>
     </div>
   );
 }
